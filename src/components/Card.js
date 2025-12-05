@@ -1,26 +1,15 @@
 export default function Card({index, client, car, service, price, date, payment_status, cancel_reason, paid_amount, comments, onEdit, onDelete})
 {
-    const getStatusIcon = () => {
-        switch(payment_status) {
-            case 'Проведена':
-                return '✓';
-            case 'В работе':
-                return '⏳';
-            case 'Отмена':
-                return '✕';
-            default:
-                return '●';
-        }
-    };
+    const { formatPrice } = require('../service/api');
 
     const getStatusColor = () => {
         switch(payment_status) {
-            case 'Проведена':
-                return '#4CAF50'; // зелёный
-            case 'В работе':
-                return '#FFC107'; // жёлтый
-            case 'Отмена':
-                return '#F44336'; // красный
+                case 'Проведена':
+                    return 'rgba(70,160,90,0.95)'; // soft green
+                case 'В работе':
+                    return 'rgba(220,170,60,0.95)'; // soft amber
+                case 'Отмена':
+                    return 'rgba(230,100,110,0.95)'; // soft red
             default:
                 return '#808080'; // серый
         }
@@ -32,12 +21,11 @@ export default function Card({index, client, car, service, price, date, payment_
         <div className={`card ${statusClass}`}>
             <div className="card-header">
                 <div className="status-badge" aria-hidden style={{backgroundColor: getStatusColor()}}>
-                    <span className="status-icon">{getStatusIcon()}</span>
                     <span className="status-text">{payment_status}</span>
                 </div>
                 <div className="card-actions">
-                    <button className="btn-edit" onClick={() => onEdit(index)}>✏️ Редактировать</button>
-                    <button className="btn-delete" onClick={() => onDelete(index)}>🗑️ Удалить</button>
+                    <button className="btn-edit" onClick={() => onEdit(index)}>Редактировать</button>
+                    <button className="btn-delete" onClick={() => onDelete(index)}>Удалить</button>
                 </div>
             </div>
             <div className="card-content card-content--vertical">
@@ -70,7 +58,7 @@ export default function Card({index, client, car, service, price, date, payment_
                     <>
                         <div className="card-row">
                             <span className="label">Сумма оплаты</span>
-                            <span className="value price">{paid_amount ? paid_amount + ' ₽' : '—'}</span>
+                            <span className="value price">{paid_amount ? formatPrice(paid_amount) : '—'}</span>
                         </div>
                         {comments && (
                             <div className="card-row">

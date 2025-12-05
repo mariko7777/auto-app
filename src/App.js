@@ -1,24 +1,23 @@
 import './App.css';
 import RecordList from './components/RecordList';
 import CreateCard from  './components/RecordForm';
+import ServicesPage from './components/ServicesPage';
+import ServiceDetails from './components/ServiceDetails';
+import UsersPage from './components/UsersPage';
+import RegisterUser from './components/RegisterUser';
+import ShiftsPage from './components/ShiftsPage';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { initializeDefaultMasters } from './service/api';
 
 function Navigation() {
   return (
-    <nav style={{ padding: '20px', borderBottom: '1px solid #ccc', backgroundColor: '#f8f9fa' }}>
-      <Link 
-        to="/records" 
-        style={{ marginRight: '15px', textDecoration: 'none', color: '#007bff', fontWeight: 'bold' }}
-      >
-        📋 Список записей
-      </Link>
-      <Link 
-        to="/create" 
-        style={{ textDecoration: 'none', color: '#007bff', fontWeight: 'bold' }}
-      >
-        ➕ Создать запись
-      </Link>
+    <nav style={{ padding: '16px 20px', borderBottom: '1px solid var(--border-color)', backgroundColor: 'var(--nav-bg)', display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Link to="/services" style={{ textDecoration: 'none', color: 'var(--link-color)', fontWeight: '700' }}>Услуги</Link>
+      <Link to="/records" style={{ marginLeft: '12px', textDecoration: 'none', color: 'var(--link-color)', fontWeight: '600' }}>Список записей</Link>
+      <Link to="/create" style={{ textDecoration: 'none', color: 'var(--link-color)', fontWeight: '600' }}>Создать запись</Link>
+      <Link to="/users" style={{ marginLeft: 12, textDecoration: 'none', color: 'var(--link-color)', fontWeight: '600' }}>Пользователи</Link>
+      <Link to="/shifts" style={{ marginLeft: 12, textDecoration: 'none', color: 'var(--link-color)', fontWeight: '600' }}>Смены</Link>
     </nav>
   );
 }
@@ -62,13 +61,22 @@ function AppContent() {
       <Routes>
         <Route path="/records" element={<RecordList editingIndex={editingIndex} onEdit={handleEdit} />} />
         <Route path="/create" element={<CreateCard editingIndex={editingIndex} onEditComplete={handleEditComplete} />} />
+  <Route path="/users" element={<UsersPage />} />
+  <Route path="/register" element={<RegisterUser />} />
+  <Route path="/shifts" element={<ShiftsPage />} />
+  <Route path="/services" element={<ServicesPage />} />
+  <Route path="/services/:category" element={<ServiceDetails />} />
         <Route path="/" element={<RecordList editingIndex={editingIndex} onEdit={handleEdit} />} />
       </Routes>
     </div>
   );
 }
 
-function App() {
+function App() { 
+  useEffect(() => {
+    initializeDefaultMasters();
+  }, []);
+
   return (
     <Router>
       <AppContent />
