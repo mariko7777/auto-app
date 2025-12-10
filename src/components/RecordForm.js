@@ -222,12 +222,12 @@ export default function CreateCard({editingIndex, onEditComplete}) {
         
         {/* Активный оператор со статусом смены */}
         {activeOperator && (
-          <div style={{ padding: 12, marginBottom: 16, borderRadius: 8, background: '#e8f5e9', border: '1px solid #81c784', display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <div style={{ fontWeight: 600, color: '#2e7d32' }}>Ответственный оператор</div>
+          <div style={{ padding: 12, marginBottom: 16, borderRadius: 8, background: '#f0ecf9', border: '1px solid #d4c9e3', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ fontWeight: 600, color: '#7a6fa8' }}>Ответственный оператор</div>
             <div style={{ fontSize: 14 }}>
               <strong>{activeOperator.name}</strong> {activeOperator.phone}
             </div>
-            <div style={{ fontSize: 12, color: '#558b2f', fontWeight: 500 }}>✓ Смена активна</div>
+            <div style={{ fontSize: 12, color: '#9680b5', fontWeight: 500 }}>✓ Смена активна</div>
           </div>
         )}
         {!activeOperator && (

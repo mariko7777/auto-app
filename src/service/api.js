@@ -236,9 +236,13 @@ export function getShifts() {
 
 export function openShift(operatorId) {
     try {
-        // Ensure operator has no open shift
-        const open = getShifts().find(s => s.operatorId === operatorId && !s.closedAt);
-        if (open) return { success: false, message: 'Смена уже открыта' };
+        // Ensure no other open shift exists (only one active shift at a time)
+        const anyOpen = getShifts().find(s => !s.closedAt);
+        if (anyOpen) {
+            // If the same operator already has it open, return that it's already open
+            if (anyOpen.operatorId === operatorId) return { success: false, message: 'Смена уже открыта' };
+            return { success: false, message: 'Невозможно открыть смену: уже есть активная смена другого оператора. Закройте её прежде чем открывать новую.' };
+        }
         const shifts = getShifts();
         const shift = { id: Date.now().toString(), operatorId, openedAt: Date.now(), closedAt: null };
         shifts.push(shift);
@@ -350,6 +354,20 @@ export function initializeDefaultMasters() {
         });
     } catch (err) {
         console.error('Ошибка инициализации мастеров', err);
+    }
+}
+
+/* ====== Initialize default operator ====== */
+export function initializeDefaultOperator() {
+    try {
+        const users = getUsers();
+        // if operator with this phone already exists, do nothing
+        const exists = users.some(u => u.phone === '+79303026375' || u.name === 'Орлов Глеб Борисович');
+        if (exists) return;
+        // create operator
+        saveUser({ name: 'Орлов Глеб Борисович', phone: '+79303026375', role: 'operator' });
+    } catch (err) {
+        console.error('Ошибка инициализации оператора', err);
     }
 }
 

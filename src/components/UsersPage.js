@@ -79,17 +79,17 @@ export default function UsersPage() {
 
       {/* Карточки статистики по ролям */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
-        <div style={{ padding: 12, borderRadius: 8, background: '#e8f4f8', border: '1px solid #a8d4e0', minWidth: 150 }}>
+        <div style={{ padding: 12, borderRadius: 8, background: '#f0ecf9', border: '1px solid #d4c9e3', minWidth: 150 }}>
           <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Мастеров</div>
-          <div style={{ fontSize: 24, fontWeight: 700, color: '#0066cc' }}>{users.filter(u => u.role === 'master').length}</div>
+          <div style={{ fontSize: 24, fontWeight: 700, color: '#8b7db8' }}>{users.filter(u => u.role === 'master').length}</div>
         </div>
-        <div style={{ padding: 12, borderRadius: 8, background: '#f0f8e8', border: '1px solid #c4e0a8', minWidth: 150 }}>
+        <div style={{ padding: 12, borderRadius: 8, background: '#f0ecf9', border: '1px solid #d4c9e3', minWidth: 150 }}>
           <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Операторов</div>
-          <div style={{ fontSize: 24, fontWeight: 700, color: '#339933' }}>{users.filter(u => u.role === 'operator').length}</div>
+          <div style={{ fontSize: 24, fontWeight: 700, color: '#8b7db8' }}>{users.filter(u => u.role === 'operator').length}</div>
         </div>
-        <div style={{ padding: 12, borderRadius: 8, background: '#fef8e8', border: '1px solid #e0cca8', minWidth: 150 }}>
+        <div style={{ padding: 12, borderRadius: 8, background: '#f0ecf9', border: '1px solid #d4c9e3', minWidth: 150 }}>
           <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Администраторов</div>
-          <div style={{ fontSize: 24, fontWeight: 700, color: '#cc8800' }}>{users.filter(u => u.role === 'admin').length}</div>
+          <div style={{ fontSize: 24, fontWeight: 700, color: '#8b7db8' }}>{users.filter(u => u.role === 'admin').length}</div>
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -137,8 +137,8 @@ export default function UsersPage() {
                     </div>
                   )}
                   <div style={{ display: 'flex', gap: 8 }}>
-                    <button onClick={handleSaveEdit} style={{ padding: '6px 12px', background: '#4a90e2', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Сохранить</button>
-                    <button onClick={handleCancelEdit} style={{ padding: '6px 12px', background: '#999', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Отмена</button>
+                    <button onClick={handleSaveEdit} style={{ padding: '6px 12px', background: '#8b7db8', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Сохранить</button>
+                    <button onClick={handleCancelEdit} style={{ padding: '6px 12px', background: '#c9c1d8', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Отмена</button>
                   </div>
                 </>
               ) : (

@@ -2,29 +2,29 @@
 .root-note { display: none }
 
 :root {
-  --bg: #f5f7fb; /* light neutral background */
-  --card-bg: #ffffff; /* white cards */
+  --bg: #faf8ff; /* light purple-tinted background */
+  --card-bg: #fdfcff; /* white cards with purple tint */
   --text-color: #1f2d3d; /* dark slate text */
   --muted: #657786; /* muted gray-blue */
-  --border-color: #e6eef6; /* soft border */
-  --nav-bg: #ffffff; /* header */
-  --btn-bg: linear-gradient(180deg,#4a90e2 0%, #357ab8 100%); /* pleasant blue gradient */
+  --border-color: #e8e2f6; /* soft purple border */
+  --nav-bg: #fdfcff; /* header with purple tint */
+  --btn-bg: #8b7db8; /* muted purple button */
   --btn-fg: #ffffff;
-  --link-color: #2b6fb6;
-  --accent-color: #357ab8;
+  --link-color: #7a6fa8;
+  --accent-color: #8b7db8;
 }
 
 /* Light theme fallback (if body has no .dark) */
 body:not(.dark) {
-  --bg: #ffffff;
+  --bg: #faf8ff;
   --card-bg: #ffffff;
   --text-color: #222222;
   --muted: #777777;
-  --border-color: #e2e8f0;
-  --nav-bg: #f8f9fa;
-  --btn-bg: #2196F3;
+  --border-color: #e8e2f6;
+  --nav-bg: #fdfcff;
+  --btn-bg: #8b7db8;
   --btn-fg: #fff;
-  --link-color: #007bff;
+  --link-color: #7a6fa8;
 }
 
 body {
